@@ -103,6 +103,12 @@
                 </configuration>
             </plugin>
         </plugins>
+             @GetMapping("/api/resource")
+public ResponseEntity<String> getResource() {
+    logger.info("Accessing /api/resource");
+    return ResponseEntity.ok("Resource found");
+}
+
     </build>
 
 </project>
