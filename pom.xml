@@ -22,7 +22,7 @@
     </parent>
 
     <properties>
-        <java.version>11</java.version> <!-- Specify Java version -->
+        <java.version>17</java.version> <!-- Specify Java version -->
         <spring-boot.version>2.7.6</spring-boot.version> <!-- Spring Boot version -->
     </properties>
 
@@ -103,11 +103,6 @@
                 </configuration>
             </plugin>
         </plugins>
-             @GetMapping("/api/resource")
-public ResponseEntity<String> getResource() {
-    logger.info("Accessing /api/resource");
-    return ResponseEntity.ok("Resource found");
-}
 
     </build>
 
