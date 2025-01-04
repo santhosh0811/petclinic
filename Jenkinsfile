@@ -1,7 +1,7 @@
-@Library('my-shared-library@main') _
+@Library('my-shared-library@main') _ 
 
 pipeline {
-    agent { label 'dev1' }
+    agent { label 'dev' }
 
     environment {
         JAVA_HOME = '/usr/lib/jvm/java-17-openjdk-amd64'
@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-        stage('Set up Java 17') {
+        stage('Set up Java 1') {
             steps {
                 setupJava()
             }
@@ -52,11 +52,13 @@ pipeline {
                 validateApp()
             }
         }
-           stage('Keeping application up for 2 mins') {
+
+        stage('Keeping application up for 2 mins') {
             steps {
                 keepApplicationUp2min()
-            }
-        }        
+            }
+        }
+
         stage('Gracefully Stop Spring Boot App') {
             steps {
                 stopApplication()
@@ -67,6 +69,6 @@ pipeline {
     post {
         always {
             cleanup()
-        }
-    }
+        }
+    }
 }
