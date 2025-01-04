@@ -1,5 +1,4 @@
 @Library('my-shared-library@main') _ 
-
 pipeline {
     agent { label 'dev1' }
 
