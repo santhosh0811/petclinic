@@ -65,10 +65,9 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            cleanup()
+         post {
+             always {
+                cleanup()
         }
     }
 }
