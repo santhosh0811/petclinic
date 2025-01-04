@@ -67,6 +67,6 @@ pipeline {
 
     post {
         always {
-            pipeline1.clean_app() 
+             clean_app()
 		}
     }
