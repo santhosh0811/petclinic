@@ -40,34 +40,29 @@ pipeline {
                 pipeline1.upload_artifact(String artifactPath)
             }
         }
-
         stage('Run Application') {
             steps {
                 pipeline1.run_application()
             }
         }
-
         stage('Validate App is Running') {
             steps {
                 pipeline1.validate_app()
             }
         }
-
         stage('Keeping application up for 2 mins') {
             steps {
                 pipeline1.keep_app()
             }
         }
-
         stage('Gracefully Stop Spring Boot App') {
             steps {
                 pipeline1.stop_app()
             }
         }
-
     post {
         always {
             cleanup()
-        }
-    }
-}
+           }
+        }
+     }
