@@ -1,4 +1,4 @@
-@Library('my-shared-library@main') _ 
+@Library('my-shared-library@main') _
 
 pipeline {
     agent { label 'dev1' }
@@ -12,57 +12,83 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                pipeline1.check_out()
+                script {
+                    pipeline1.check_out()
+                }
             }
         }
-    }
-        stage('Set up Java 1') {
+
+        stage('Set up Java') {
             steps {
-                pipeline1.setup_java()
+                script {
+                    pipeline1.setup_java()
+                }
             }
         }
 
         stage('Set up Maven') {
             steps {
-                pipeline1.setup_maven()
+                script {
+                    pipeline1.setup_maven()
+                }
             }
         }
 
         stage('Build with Maven') {
             steps {
-                pipeline1.setup_build()
+                script {
+                    pipeline1.setup_clean()
+                }
             }
         }
 
         stage('Upload Artifact') {
             steps {
-                echo 'Uploading artifact...'
-                pipeline1.upload_artifact(String artifactPath)
+                script {
+                    pipeline1.upload_artifact('target/*.jar')
+                }
             }
         }
+
         stage('Run Application') {
             steps {
-                pipeline1.run_application()
+                script {
+                    pipeline1.run_application()
+                }
             }
         }
+
         stage('Validate App is Running') {
             steps {
-                pipeline1.validate_app()
+                script {
+                    pipeline1.validate_app()
+                }
             }
         }
-        stage('Keeping application up for 2 mins') {
+
+        stage('Keeping Application Up for 2 Minutes') {
             steps {
-                pipeline1.keep_app()
+                script {
+                    pipeline1.sleep_app()
+                }
             }
         }
+
         stage('Gracefully Stop Spring Boot App') {
             steps {
-                pipeline1.stop_app()
+                script {
+                    pipeline1.stop_app()
+                }
             }
         }
+    }
+
     post {
         always {
-            cleanup()
-           }
+            script {
+                echo 'Cleaning up resources...'
+                // Add any cleanup steps if required
+            }
         }
-     }
+    }
+}
