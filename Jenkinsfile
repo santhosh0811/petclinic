@@ -10,7 +10,7 @@ pipeline {
     }
 
     stages {
-        stage('pipeline') {
+        stage('PipeLine') {
             steps {
                 PipeLine()
             }
