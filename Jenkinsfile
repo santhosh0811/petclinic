@@ -15,7 +15,7 @@ pipeline {
                 pipeline1.check_out()
             }
         }
-
+    }
         stage('Set up Java 1') {
             steps {
                 pipeline1.setup_java()
@@ -64,11 +64,9 @@ pipeline {
                 pipeline1.stop_app()
             }
         }
-    }
 
     post {
         always {
             pipeline1.clean_app() 
 		}
     }
-}
