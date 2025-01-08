@@ -11,6 +11,14 @@
     <description>Pet Clinic Application</description>
     <packaging>jar</packaging>
 
+    <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>a0dim1olxl00a-artifactory-primary-0-releases</name>
+        <url>https://trialmeq24j.jfrog.io/artifactory/pet_clinic-libs-release</url>
+    </repository>
+    </distributionManagement>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
